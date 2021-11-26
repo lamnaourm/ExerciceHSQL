@@ -4,10 +4,18 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name="produit")
+@NamedQueries( {
+                       @NamedQuery(name="q1", query="from Produit"),
+                       @NamedQuery(name="q2", query="from Produit where prix_achat > :prix and prd_nom like :nom"),
+                       @NamedQuery(name="q3", query="from Produit where prix_vente between 100 and 1000")
+			}) 
 public class Produit {
 
 	@Id

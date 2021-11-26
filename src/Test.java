@@ -17,12 +17,12 @@ public class Test {
 		
 		// Q1 : Afficher tous les produits qui se trouve dans la table PRODUIT.
 		System.out.println("1- Afficher tous les produits qui se trouve dans la table PRODUIT");
-		List<Produit> prds = s.createQuery("from Produit").list();
+		List<Produit> prds = s.createNamedQuery("q1").list();
 		for(Produit p : prds)
 			System.out.println(p);
 		// Q2 :Afficher tous les produits qui ont un prix d’achat > 200 et qui ont un nom qui commence par A.
 		System.out.println("2- Afficher tous les produits qui ont un prix d’achat > 12 et qui ont un nom qui commence par A");
-		prds = s.createQuery("from Produit where prix_achat > :prix and prd_nom like :nom")
+		prds = s.createNamedQuery("q2")
 				.setParameter("prix", 12.0)
 				.setParameter("nom", "N%")
 				.list();
@@ -30,7 +30,7 @@ public class Test {
 			System.out.println(p);
 		// Q3 :Afficher tous les produit qui ont un prix de vente entre 100 et 1000. 
 		System.out.println("3- Afficher tous les produit qui ont un prix de vente entre 100 et 1000");
-		prds = s.createQuery("from Produit where prix_vente between 100 and 1000").list();
+		prds = s.createNamedQuery("q3").list();
 		for(Produit p : prds)
 			System.out.println(p);
 		// Q4 :Afficher la somme des prix de vente et prix d’achat par famille.
